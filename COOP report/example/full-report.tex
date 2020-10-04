@@ -17,22 +17,26 @@
 
 \graphicspath{ {images/} }
 
+\setcounter{secnumdepth}{4}
+
 %Your thesis title (THAI)
-\newcommand{\ThesisTiTle}{ระบบตรวจหาข้อความบนภาพมังงะด้วยเทคนิค Stroke Width Transform}
+\newcommand{\ThesisTiTle}{ระบบแนะนำแบบผสมสำหรับเว็บไซต์หางาน}
 %Your thesis title (ENG)
-\newcommand{\ThesisTiTleENG}{DETECTING TEXT IN MANGA USING STROKE WIDTH TRANSFORM}
-\newcommand{\ThesisTiTleENGSnakecase}{Detecting Text in Manga Using Stroke Width Transform}
+\newcommand{\ThesisTiTleENG}{HYBRID WEB RECOMMENDATION SYSTEM FOR JOB SEEKER}
+\newcommand{\ThesisTiTleENGSnakecase}{Hybrid Web Recommendation System for Job Seeker}
 %Your name
-\newcommand{\AuName}{บุญฤทธิ์ พิริย์โยธินกุล}
+\newcommand{\AuName}{วศิน เสริมสัมพันธ์}
 %Your name ENG
-\newcommand{\AuNameENG}{BOONYARITH PIRIYOTHINKUL}
-\newcommand{\AuNameENGSnakecase}{Boonyarith Piriyothinkul}
+\newcommand{\AuNameENG}{VASIN SERMSAMPAN}
+\newcommand{\AuNameENGSnakecase}{Vasin Sermsampan}
 %Your student ID
-\newcommand{\SId}{58070077}
+\newcommand{\SId}{60070157}
 %Your advisor
-\newcommand{\Advisor}{รองศาสตราจารย์ ดร. กิติ์สุชาต พสุภา}
+\newcommand{\Advisor}{รศ.ดร.วรพจน์ กรีสุระเดช}
+\newcommand{\AdvisorSub}{ดร.นนท์ คนึงสุขเกษม}
 %Your advisor english
-\newcommand{\AdvisorEng}{Associate Professor Dr. Kitsuchart Pasupa}
+\newcommand{\AdvisorEng}{Assoc Prof. Worapoj Kreesuradej}
+\newcommand{\AdvisorEngSub}{Dr. Nont Kanungsukkasem}
 %Your advisor employee
 \newcommand{\Exami}{Professor Dr. Masanori Sugimoto}
 %สถานประกอบการ
@@ -40,9 +44,9 @@
 %ภาคเรียนที่ (in normal letters)
 \newcommand{\Sem}{1}
 %ปีการศึกษา (in normal letters)
-\newcommand{\AcaY}{2561}
+\newcommand{\AcaY}{2563}
 %ปีการศึกษา (in normal letters)
-\newcommand{\AcaYAD}{2018}
+\newcommand{\AcaYAD}{2020}
 %วันส่งรายงาน
 \newcommand{\SubD}{10 พฤศจิกายน พ.ศ. 2561}
 %วันเริ่มทำงาน
@@ -56,69 +60,201 @@
 %ตำแหน่งานที่ปฏิบัติ
 \newcommand{\Position}{ผู้ช่วยนักวิจัย}
 
-\begin{document}    
-    \frontmatter
-    \pagenumbering{Roman}
-    \lhead{}\rhead{}\chead{}\lfoot{}\cfoot{\thepage}\rfoot{}
-    
-    \makecover
-    \makeinnercover
-    \makeengcover
-    \makecopyrightcover
-    \makeletter
-    \makeack{
-        \begin{enumerate}
-            \item \Exami \quad ตำแหน่ง ศาสตราจารย์
-            \item Jiang Ye \quad ตำแหน่ง นักศึกษาปริญญาเอก ปี 2
-        \end{enumerate}
-    }
-    \makeapproveletter
-    
-    % Setting margin for page numbering on frontmatter
-    \newgeometry{top=1in, bottom=1in, left=1.5in, right=1in, includefoot}
-    
-    \makeabstract{
-        \textbf{การ์ตูนญี่ปุ่น} หรือที่รู้จักกันอย่างแพร่หลายว่า \textbf{มังงะ (Manga)} กลายเป็นหนึ่งในหัวข้อที่ถูกหยิบมาวิจัย ในงานวิจัยชิ้นนี้มุ่งเน้นไปที่ปัญหาการตรวจหาข้อความบนภาพวาดมังงะ เนื่องจากปัญหาการสร้างชุดข้อมูลภาพมังงะและข้อมูลประกอบ (Annotation) อย่างเช่นการระบุขอบเขตข้อความ ซึ่งต้องใช้แรงงานคนและกินเวลาอย่างมาก ดังนั้นการพัฒนาระบบอัตโนมัติที่จะสามารถเข้ามาช่วยในงานส่วนนี้ได้จึงเป็นสิ่งที่น่าสนใจเป็นอย่างมาก โดยเราได้นำเสนอวิธีการตรวจหาข้อความบนภาพมังงะแบบใหม่ด้วยการใช้ Stroke Width Transform (SWT) ร่วมกับการใช้ Support Vector Machine (SVM) อย่างไรก็ดีวิธี SWT โดยดั้งเดิมนั้นถูกพัฒนาขึ้นเพื่อ เพื่อการตรวจหาข้อความบนภาพถ่าย ทำให้ไม่สามารถประยุกต์ใช้กับภาพมังงะได้ เพราะความแตกต่างระหว่างลักษระวัตถุกับอักษรของข้อความในภาพวาดและภาพถ่ายนั้นคล้ายคลึงมากกันเกินไป ดังนั้นเพื่อให้สามารถใช้งานกับมังงะได้ เราจึงนำวิธีการตรวจหาข้อความด้วย SWT ดั้งเดิมมาปรับปรุงและพัฒนาขึ้นเป็นวิธีการใหม่ของเรา โดยเราได้ปรับปรุงกฎเกณฑ์ในการค้นหาวัตถุที่คล้ายคลึงอักษร (Letter Candidates) ซึ่งช่วยเพิ่มประสิทธิภาพในการตรวจจับอักษรได้ครบถ้วนมากขึ้น และใช้ SVM เพื่อคัดแยกวัตถุอื่น ๆ ออกจากอักษร ช่วยในการลด False Positive ของผลลัพธ์ ในท้ายที่สุดเรานำประสิทธิภาพวิธีการของเรามาเปรียบเทียบร่วมกับวิธีการดั้งเดิมและวิธีอื่น ๆ รวมถึงวิธีที่ใช้ Deep Learning เป็นส่วนประกอบ ในท้ายที่สุดประสิทธิภาพของวิธีการใหม่ของเรานั้นสามารถทำคะแนน F-measure ได้สูงสุดเทียบกับวิธีการอื่น ๆ ที่ 0.506
-    }
+\begin{document}
+\frontmatter
+\pagenumbering{Roman}
+\lhead{}\rhead{}\chead{}\lfoot{}\cfoot{\thepage}\rfoot{}
 
-    \makeengabstract{
-        The Japanese comic-book style known as manga is becoming a popular topic for researchers. This paper focuses on the problem of detecting text regions in manga pages. Because it is time-consuming and laborious to identify the text regions in images manually, an automatic approach is highly desirable. Here, we propose a new text-detection method for manga using a Stroke Width Transform (SWT) technique in conjunction with a Support Vector Machine (SVM). Conventional SWT-based text-detection techniques perform poorly with manga because both text and non-text objects have similar characteristics for strokes, lines, and shapes. To better suit manga, we propose modifying the rules for finding letter candidates, which improves the ability to capture text. An SVM is then used to classify image patches into letter and nonletter regions. We compared our proposed framework with a conventional framework and other text-detection methods including deep-learning techniques. In the results, our proposed method achieved the highest F-measure of 0.506.
-    }
+\makecover
+\makeengcover
+\makecopyrightcover
+% \makeletter
+\makeack{
+	\begin{enumerate}
+		\item \Exami \quad ตำแหน่ง ศาสตราจารย์
+		\item Jiang Ye \quad ตำแหน่ง นักศึกษาปริญญาเอก ปี 2
+	\end{enumerate}
+}
+\makeapproveletter
 
-    \newpage
-    \addcontentsline{toc}{chapter}{สารบัญ}
-    \tableofcontents
-    
-    \newpage
-    \addcontentsline{toc}{chapter}{สารบัญตาราง}
-    \listoftables
-    
-    \newpage
-    \addcontentsline{toc}{chapter}{สารบัญรูป}
-    \listoffigures
-    
-    % Reset frontmatter page numbering margin, back to original margin from class file
-    \restoregeometry
+% Setting margin for page numbering on frontmatter
+\newgeometry{top=1in, bottom=1in, left=1.5in, right=1in, includefoot}
 
-    \mainmatter
-    \lhead{}\rhead{\thepage}\chead{}\lfoot{}\cfoot{}\rfoot{}
-    
-    \include{chapter1}
-    \include{chapter2}
-    \include{chapter3}
-    \include{chapter4}
-    \include{chapter5}
-    
-    \clearpage
-    \addcontentsline{toc}{chapter}{บรรณานุกรม}
-    \bibliographystyle{IEEEtran}
-    \bibliography{reference}
-    
-    \newpage
-    sdfsd
-    
+\makeabstract{
+  % ในช่วงเวลาที่ผ่านมา ระบบแนะนำงานได้กลายเป็นที่นิยมเป็นอย่างมาก เนื่องจากประสบความสำเร็จใจการลดจำนวนการเข้าถึงของยูสเซอร์ที่เข้ามาใช้ค้นหางานได้เป็นจำนวน ด้วยการแนะนำงานที่เหมาะกับบุคคลนั้น ๆ แต่ถึงอย่างนั้นเทคนิกที่มีใช้อยู่ในระบบทุกวันนี้ ส่วนใหญ่ยังไม่สามารถ แนะนำตำแหน่งงานที่เหมาะสมกับโปรไฟล์ผู้หางานได้ดีเท่าที่ควรเช่น แนะนำเฉพาะส่วนของฟิลด์งานแทนที่จะแนะนำงานงานเป็นกรณีเพื่อให้งานนั้นสอดคล้องกับโปรไฟล์ผู้หางานที่สุด ทั้งนี้เราจึงมีวัตถุประสงค์โดย \\ I) รวบรวมชุดข้อมูลของตำแหน่งงาน จากเว็บไซต์หางานต่าง ๆ และโปรไฟล์ยูสเซอร์จากเว็บไซต์ลิงกต์อิน (linkedin) ด้วยเครื่องมือค้นหาของเว็บไซต์ (search engine) เหล่านั้น II) ออกแบบกรอบการทำงานระบบแนะนำโดยขึ้นอิงจากโปรไฟล์ทักษะวิชาชีพของยูสเซอร์ III) ดำเนินการประเมินเชิงประจักษ์ของความสามารถในการให้การแนะนำ โดยพิจารณาการกำหนดค่าที่แตกต่างกัน จากกรอบงานที่เสนอ IIII) พัฒนาส่วนเว็บแอพพลิเคชั่นเพื่อให้บริการระบบแนะนำงาน
+  ในช่วงเวลาที่ผ่านมา ระบบแนะนำได้กลายเป็นที่นิยมและถูกนำไปใช้งานจากหลากหลายผู้ให้บริการ จากการประสบความสำเร็จในการลดจำนวนยูสเซอร์ที่เข้ามาค้นหาได้เป็นจำนวนมาก ด้วยการแนะนำตำแหน่งงานที่เหมาะสมกับบุคคลที่เข้ามาใช้งาน แต่ถึงอย่างนั้นเทคนิคที่ผู้ให้บริการส่วนใหญ่ใช้อยู่ ยังไม่มีศักยภาพมากพอที่จะแนะนำตำแหน่งานที่เหมาะสมหรือสอดคล้องกับโปรไฟล์ผู้หางานได้ โดยผู้ให้บริการส่วนใหญ่จะมีการแนะนำเพียงฟิลด์หรือหมวดหมู่งานแทนแนะนำตำแหน่งงานเป็นกรณีเพื่อให้งานที่แนะนำสอดคล้องกับโปรไฟล์ยูสเซอร์มากที่สุด ด้วยประการทั้งปวงเราจึงมีวัตถุประสงค์โดย
+  I) ออกแบบระบบรวบรวมชุดข้อมูลของตำแหน่งงาน จากเว็บไซต์หางานจ็อบดีบี (JobsDB) และโปรไฟล์ยูสเซอร์ที่มีความน่าเชื่อถือสูงจากเว็บไซต์ลิงกต์อิน (LinkedIn) โดยใช้เทคนิคการสกัดข้อมูล (data scraping)
+  II) ออกแบบโครงสร้างท่อส่งข้อมูลอัตโนมัติ (automated data pipeline) เพื่อจัดการการไหลของข้อมูลที่มาจากการสกัดและจัดการกับข้อมูลเหล่านี้ให้อยู่ในรูปแบบที่เป็นโครงสร้าง (structured data)
+  III) ออกแบบกรอบการทำงานของระบบแนะนำโดยอิงจากโปรไฟล์ทักษะวิชาชีพของยูสเซอร์ และข้อมูลตำแหน่งงาน
+  IV) ออกแบบโมเดลการจัดหมวดหมู่ตำแหน่งงาน โดยแยกประเทศตำแหน่งงานจากข้อมูลโปรไฟล์และตำแหน่งงาน เพื่อเพิ่มประสิทธิภาพในการแนะนำรวมลดระยะเวลาและทรัพยากรที่ต้องใช้
+  V) ดำเนินการประเมินเชิงประจักษ์ของความสามารถในการให้การแนะนำ โดยพิจารณาการกำหนดค่าที่แตกต่างกัน จากกรอบงานที่เสนอ 
+  VI) พัฒนาส่วนเว็บแอพพลิเคชั่นเพื่อให้บริการระบบแนะนำงาน
+}
 
-    \startappendix
-    \include{appendix}
-    
+\makeengabstract{
+  In the last years, the job recommendation system has become very popular. Due to its success in reducing the traffic of users who came to find a job position, By generating personalized job suggestions that are suitable for that person. However, most of them fail to recommend job vacancies that fit properly to the job seekers' profiles as they should be, Examples of problems, such as recommend only the part of the job field instead of suggesting it on a case-by-case for the job to be most consistent with the job seeker profile. We, therefore, have the following objectives: 
+  I) Collect job data sets from site JobsDB and professional profile from LinkedIn. Using data scraping techniques 
+  II) Design an automated data pipeline to manage the flow of data coming from data scraping and manipulation to structured data
+  III) Design a recommended system framework based on jobs data and professional skills 
+  IV) Design job classification model by predicting the group of job positions based on profile and job information. To optimize the recommendation, as well as reducing the amount of time and resource  that be used
+  V) Conducting an empirical assessment of the ability to make recommendations By considering the different configurations From the proposed framework IIII) Develop a web application section to provide job guidance systems
+  VI) Develop a web application to provide job recommendation service
+}
+
+\newpage
+\addcontentsline{toc}{chapter}{สารบัญ}
+\tableofcontents
+
+\newpage
+\addcontentsline{toc}{chapter}{สารบัญตาราง}
+\listoftables
+
+\newpage
+\addcontentsline{toc}{chapter}{สารบัญรูป}
+\listoffigures
+
+% Reset frontmatter page numbering margin, back to original margin from class file
+\restoregeometry
+
+\mainmatter
+\lhead{}\rhead{\thepage}\chead{}\lfoot{}\cfoot{}\rfoot{}
+
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+
+% \clearpage
+\addcontentsline{toc}{chapter}{บรรณานุกรม}
+\bibliographystyle{ieeetr}
+\bibliography{reference}
+
+\begin{thebibliography}{9}
+
+  \bibitem{baptiste} 
+  Baptiste Rocca: Introduction to recommender systems
+  \\\texttt{https://towardsdatascience.com/introduction-to-recommender-systems-6c66cf15ada}
+
+  \bibitem{tuple}
+  Collaborative filtering ฟีเจอร์การแนะนำเพลงของ Spotify
+  \\\texttt{https://tupleblog.github.io/spotify/}  
+
+  \bibitem{robin} 
+  Robin Burke : Hybrid Web Recommender Systems
+  \textit{University of Colorado Boulder}
+
+  \bibitem{Sharma} 
+  Nikita Sharma: Recommender Systems with Python — Part I: Content-Based Filtering
+  \\\texttt{https://heartbeat.fritz.ai/recommender-systems-with-python-part-i-content-based-filtering-5df4940bd831}
+
+  \bibitem{princegrover} 
+  Prince Grover: Various Implementations of Collaborative Filtering
+  \\\texttt{https://towardsdatascience.com/various-implementations-of-collaborative-filtering100385c6dfe0}
+
+  \bibitem{farshad} 
+  Farshad Bakhshandegan Moghaddam : Cold Start Solutions For Recommendation Systems
+  \textit{Institute for Automation and Applied Informatics}
+
+  \bibitem{diego} 
+  Diego Lopez Yse: Your Guide to Natural Language Processing (NLP)
+  \\\texttt{https://towardsdatascience.com/your-guide-to-natural-language-processing-nlp-48ea2511f6e1}
+  
+  \bibitem{lukkiddd} 
+  Lukkiddd: Word Embedding and Word2Vec
+  \\\texttt{https://lukkiddd.com}
+
+  \bibitem{cory} 
+  Cory Maklin: TF IDF | TFIDF 
+  \\\texttt{https://towardsdatascience.com/natural-language-processing-feature-engineering-using-tf-idf-e8b9d00e7e76}
+  
+  \bibitem{selva} 
+  Selva Prabhakaran: Cosine Similarity – Understanding the math and how it works
+  \\\texttt{https://www.machinelearningplus.com/nlp/cosine-similarity/}
+
+  \bibitem{cory2} 
+  Cory Maklin: Support Vector Machine Python Example
+  \\\texttt{https://towardsdatascience.com/support-vector-machine-python-example-d67d9b63f1c8}
+
+  \bibitem{choochart} 
+  Choochart Haruechaiyasak: A Data Mining Framework for Building A Web-Page Recommendem System
+  \textit{Information Research and Development Division. 2015}
+
+  \bibitem{margaret} 
+  Margaret Rouse: Web application
+  \\\texttt{https://searchsoftwarequality.techtarget.com/definition/Web-application-Web-app}
+
+
+
+
+
+
+  \bibitem{huizhiliang} 
+  Huizhi Liang: Real-time Collaborative Filtering Recommender Systems
+  \textit{Department of Computing and Information Systems}
+  The University of Melbourne. 2005.
+
+  \bibitem{philip} 
+  Philip Lenhart: Combining Content-based and Collaborative Filtering for Personalized Sports News Recommendations
+  \textit{Department of Informatics. 2016}
+
+  \bibitem{PyOhio} 
+  PyOhio Lenhart: “Large-Scale Recommendation System with Python and Spark
+  \\\texttt{https://www.youtube.com/watch?v=oAByzl71Ak4}
+
+  \bibitem{cory} 
+  Cory Maklin: Support Vector Machine Python Example
+  \\\texttt{https://towardsdatascience.com/support-vector-machine-python-example-d67d9b63f1c8}
+
+  \bibitem{min} 
+  Sung-Hwan Min: Recommender Systems Using Support Vector Machines 
+  \textit{Graduate School of Management, Korea Advanced Institute of Science and Technology}
+  207-43 Cheongrangri-dong, Dongdaemun-gu, Seoul 130-722, Korea shmin@kgsm.kaist.ac.kr 
+
+  
+  \bibitem{chhavi} 
+  Chhavi Saluja: Collaborative Filtering based Recommendation Systems exemplified
+  \\\texttt{https://towardsdatascience.com/collaborative-filtering-based-recommendation-systems-exemplified-ecbffe1c20b1}
+
+  \bibitem{erion} 
+  Erion Çano Min: Hybrid Recommender Systems: A Systematic Literature Review
+  \textit{Charles University in Prague Prague, CZ, Czechia}
+
+  \bibitem{adam} 
+  Adam Lineberry: Hybrid Content-Collaborative Movie Recommender Using Deep Learning
+  \\\texttt{https://towardsdatascience.com/creating-a-hybrid-content-collaborative-movie-recommender-using-deep-learning-cc8b431618af}
+
+ 
+  \bibitem{qing} 
+  Qing Li : An Approach for Combining Content-based and Collaborative Filters 
+  \textit{Dept. of Computer Sciences Kumoh National Institute of Technology}
+  Kumi, kyungpook, 730-701,South Korea liqing@se.Kumoh.ac.kr 
+
+  \bibitem{jorge} 
+  Jorge Valverde-Rebaza: Job Recommendation based on Job Seeker Skills: An Empirical Study
+  \textit{Ricardo Puma's}
+
+  \bibitem{airflow}
+  Apache Airflow: Apache Airflow. Archived from the original on August 12, 2019. Retrieved September 30, 2019.
+  \\\texttt{https://airflow.apache.org/docs/stable/project.html}
+
+  \bibitem{docker}
+  ทำความรู้จัก Docker และการใช้งานบน CentOS 7
+  \\\texttt{https://www.hostpacific.com/using-docker-on-centos7/}
+
+  \bibitem{comptia}
+  CompTIA Certification Roadmap
+  \\\texttt{http://certification.comptia.org/why-certify/roadmap}
+
+
+  \end{thebibliography}
+
+  
+
+\newpage
+
+
+% \startappendix
+% \include{appendix}
+
 \end{document}

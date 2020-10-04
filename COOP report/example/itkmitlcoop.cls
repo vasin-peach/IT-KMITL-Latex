@@ -1,6 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{itkmitlcoop}[2018/11/09]
 
+\newenvironment{conditions}
+  {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
+  {\end{tabular}\par\vspace{\belowdisplayskip}}
+
 \LoadClass[12pt, a4paper, oneside]{book}
 
 \RequirePackage[top=1in, bottom=1in, left=1.5in, right=1in]{geometry}
@@ -208,36 +212,14 @@
     \thispagestyle{empty}
     
     \begin{center}
-        \Large{\textbf{รายงานการปฏิบัติงานสหกิจศึกษา}} \vskip1cm
-        \LARGE{\textbf{เรื่อง}} \\
         \LARGE{\textbf{\ThesisTiTle}} \\
         \LARGE{\textbf{\ThesisTiTleENG}} \vskip3cm
-        \Large{\textbf{ปฎิบัติงาน ณ \Company}} \vskip1cm
-        \Large{\textbf{โดย}} \vskip1cm
         \Large{\textbf{\AuName}}  \\
         \Large{\textbf{รหัสประจำตัว \SId}} \null \vfill
-        \large{\textbf{รายงานนี้เป็นส่วนหนึ่งของการศึกษารายวิชา สหกิจศึกษา \\
-                สาขาวิชาเทคโนโลยีสารสนเทศ คณะเทคโนโลยีสารสนเทศ \\
-                ภาคเรียนที่~\Sem \  ปีการศึกษา~\AcaY\\ 
+        \large{\textbf{รายงานนี้เป็นส่วนหนึ่งของการศึกษาตามหลักสูตร \\
+                สาขาวิชาวิทยาการข้อมูลและการวิเคราะห์เชิงธุรกิจ คณะเทคโนโลยีสารสนเทศ \\
+                ปีการศึกษา~\AcaY\\ 
                 สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง }}
-    \end{center}
-}
-
-\newcommand{\makeinnercover}{
-    % ปกใน
-    \newpage
-    \thispagestyle{empty}
-    \begin{center}
-        \Large{\textbf{รายงานการปฏิบัติงานสหกิจศึกษา}} \\
-        \LARGE{\textbf{\ThesisTiTle}} \\
-        \LARGE{\textbf{\ThesisTiTleENG}} \vskip4cm
-        \Large{\textbf{ปฎิบัติงาน ณ \Company}} \vskip1cm
-        \Large{\textbf{โดย}} \vskip1cm
-        \Large{\textbf{\AuName}}  \\
-        \Large{\textbf{รหัสประจำตัว \SId}} \null \vfill
-        \large{\textbf{ปฏิบัติงาน ณ \Company \\
-                \Address \\ 
-                Web site : \Website}}
     \end{center}
 }
 
@@ -249,12 +231,12 @@
         \LARGE{\textbf{\ThesisTiTleENG}} \vskip7cm
         \Large{\textbf{\AuNameENG}}  \null \vfill
         \large{\textbf{A REPORT SUBMITTED IN PARTIAL FULFILLMENT OF \\
-                THE REQUIREMENT FOR COOPERATING EDUCATION PROGRAM \\
+                THE REQUIREMENT FOR EDUCATION PROGRAM \\
                 THE DEGREE OF BACHELOR OF SCIENCE PROGRAM IN \\
-                INFORMATION TECHNOLOGY \\
-                FACULTY OF INFORMATION TECNOLOGY \\
+                DATA SCIENCE AND BUSINESS ANALYSIS \\
+                FACULTY OF INFORMATION TECHNOLOGY \\
                 KING MONGKUT’S INSTITUTE OF TECHNOLOGY LADKRABANG \\
-                \Sem / \AcaYAD}}
+                \AcaYAD}}
     \end{center}
 }
 
@@ -273,20 +255,20 @@
     %-- หนังสือส่งรายงานการปฏิบัติงานสหกิจศึกษา -------------------------------------------
     \newpage
     \thispagestyle{empty}
-    \begin{flushright}
-        วันที่ \SubD
-    \end{flushright}
     
-    \noindent เรื่อง ขอส่งรายงานการปฏิบัติงานสหกิจศึกษา \\
-    เรียน \Advisor \vskip0.1cm
+    \noindent ปริญญานิพนธ์ปีการศึกษา 2563 \\
+    ภาควิชาวิทยาการข้อมูลและการวิเคราะห์เชิงธุรกิจ
     
-    \hskip0.2cm ที่ปรึกษาสหกิจศึกษาในสาขาเทคโนโลยีสารสนเทศ \vskip1cm
+    \noindent คณะเทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
     
-    ตามที่ข้าพเจ้า \AuName \ นักศึกษาสาขาวิชาเทคโนโลยีสารสนเทศ คณะเทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง ได้ปฏิบัติงานสหกิจศึกษาระหว่างวันที่ \StartDWork \ ถึงวันที่ \EndDWork \ ในตำแหน่ง \Position \ ณ สถานประกอบการชื่อ \Company \ และได้รับมอบหมายจากพนักงานที่ปรึกษาให้ศึกษาและจัดทำรายงาน เรื่อง \ThesisTiTle
+    \noindent เรื่อง \ThesisTiTle \\
+    \ThesisTiTleENG
+    ผู้จัดทำ
+
+    นาย\AuName \ รหัสนักศึกษา \SId
+    % บัดนี้ การปฏิบัติงานสหกิจศึกษาได้สิ้นสุดลงแล้ว จึงใคร่ขอส่งรายงานการปฏิบัติงาน สหกิจศึกษาดังกล่าวมาพร้อมนี้ จำนวน 1 เล่ม เพื่อขอรับคำปรึกษาต่อไป 
     
-    บัดนี้ การปฏิบัติงานสหกิจศึกษาได้สิ้นสุดลงแล้ว จึงใคร่ขอส่งรายงานการปฏิบัติงาน สหกิจศึกษาดังกล่าวมาพร้อมนี้ จำนวน 1 เล่ม เพื่อขอรับคำปรึกษาต่อไป 
-    
-    จึงเรียนมาเพื่อโปรดพิจารณา 
+    % จึงเรียนมาเพื่อโปรดพิจารณา 
     
     \vskip1.5cm
     \begin{flushright}    
@@ -306,11 +288,11 @@
         {\LARGE \textbf{กิตติกรรมประกาศ} }
     \end{center} \vskip2em
     
-    ตามที่ข้าพเจ้า \AuName \ ได้มาปฏิบัติงานสหกิจศึกษา ณ \Company \ ตั้งแต่วันที่ \StartDWork \ ถึงวันที่ \EndDWork \ ทำให้ข้าพเจ้าได้รับความรู้และประสบการณ์ต่าง ๆ ที่มีคุณค่ามากมาย สำหรับรายงานสหกิจศึกษาฉบับนี้สำเร็จลงได้ด้วยดี จากความช่วยเหลือและความร่วมมือสนับสนุนของหลายฝ่าย ดังนี้ 
-    
+    การงานนี้สำเร็จลุล่วงได้ด้วยความกรุณาช่วยเหลือ แนะนำให้คำปรึกษา และตรวจสอบแก้ไขข้อบกพร่องต่าง ๆ ด้วยความเอาใจใส่อย่างยิ่งจากอาจารย์ที่ปรึกษา และอาจารย์ที่ปรึกษาร่วมทั้งสองท่าน ทำให้ข้าพเจ้าได้รับความรู้และประสบการณ์ต่าง ๆ ที่มีคุณค่ามากมาย และจบลงได้ด้วยดี
+
     #1
     
-    นอกจากนี้ยังมีบุคคลท่านอื่น ๆ อีกที่ไม่ได้กล่าวไว้ ณ ที่นี้ ซึ่งให้ความกรุณาแนะนำในจัดทำรายงานสหกิจศึกษาฉบับนี้ ข้าพเจ้าจึงใคร่ขอขอบพระคุณทุกท่านที่ได้มีส่วนร่วมในการให้ข้อมูลและให้ความเข้าใจเกี่ยวกับชีวิตของการปฏิบัติงาน รวมถึงเป็นที่ปรึกษาในการจัดทำรายงานฉบับนี้จนเสร็จสมบูรณ์ 
+    นอกจากนี้ยังมีบุคคลท่านอื่น ๆ อีกที่ไม่ได้กล่าวไว้ ณ ที่นี้ ซึ่งให้ความกรุณาแนะนำในจัดทำรายงานฉบับนี้ ข้าพเจ้าจึงใคร่ขอขอบพระคุณทุกท่านที่ได้มีส่วนร่วมในการให้ข้อมูลและให้ความเข้าใจเกี่ยวกับชีวิตของการปฏิบัติงาน รวมถึงเป็นที่ปรึกษาในการจัดทำรายงานฉบับนี้จนเสร็จสมบูรณ์ 
     
     \vskip1.5cm
     \begin{flushright}    
@@ -325,14 +307,20 @@
 \newcommand{\makeapproveletter}{
     %-X- หน้าอนุมัติรายงาน -X------------------------------------------
     % Do NOT EDIT this page
+  
     \newpage
+    \begin{center}
+      {\LARGE \textbf{ใบรับรองปริญญานิพนธ์ ประจำปีการศึกษา 2563} \\}
+      \LARGE{\textbf{คณะเทคโนโลยีสารสนเทศ} \\}
+      \LARGE{\textbf{สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง}}
+    \end{center} \vskip2em
     \thispagestyle{empty}
     \begin{table}[h]
         \begin{tabularx}{\linewidth}{lX}
-            \textbf{ชื่อรายงานการปฏิบัติงานสหกิจศึกษา} & \ThesisTiTle \\
-            \textbf{ผู้รายงาน} & \AuName \\
+            \textbf{เรื่อง} & \ThesisTiTle \\
+            \textbf{ผู้จัดทำ} & \AuName \\
             \textbf{คณะ} & เทคโนโลยีสารสนเทศ \\
-            \textbf{สาขาวิชา} & เทคโนโลยีสารสนเทศ
+            \textbf{สาขาวิชา} & วิทยาการข้อมูลและการวิเคราะห์เชิงธุรกิจ
         \end{tabularx}
     \end{table} \vskip3cm
     
@@ -340,15 +328,16 @@
     \begin{center}
         ...................................................................... \\
         (\Advisor ) \\
-        อาจารย์ที่ปรึกษาสหกิจศึกษา \vskip2.5cm
+        อาจารย์ที่ปรึกษา \vskip2.5cm
         
         ...................................................................... \\
-        (\Exami) \\
-        พนักงานที่ปรึกษา \null \vfill
+        (\AdvisorSub) \\
+        อาจารย์ที่ปรึกษาร่วม \null \vfill
+        
         
         คณะเทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง	\\
         อนุมัติให้นับรายงานการปฏิบัติงานสหกิจศึกษาฉบับนี้ เป็นส่วนหนึ่งของการศึกษา \\
-        ตามหลักสูตรวิทยาศาสตรบัณฑิต สาขาวิชาเทคโนโลยีสารสนเทศ
+        ตามหลักสูตรวิทยาศาสตรบัณฑิต สาขาวิชาวิทยาการข้อมูลและการวิเคราะห์เชิงธุรกิจ
         
     \end{center}
 }
@@ -364,8 +353,9 @@
             \textbf{ชื่อรายงาน} & \ThesisTiTle \\
             \textbf{ชื่อนักศึกษา} & \AuName \\
             \textbf{รหัสนักศึกษา} & \SId \\
-            \textbf{สาขาวิชา} & เทคโนโลยีสารสนเทศ \\
+            \textbf{สาขาวิชา} & วิทยาการข้อมูลและการวิเคราะห์เชิงธุรกิจ \\
             \textbf{อาจารย์ที่ปรึกษา} & \Advisor \\
+            \textbf{อาจารย์ที่ปรึกษาร่วม} & \AdvisorSub \\
             \textbf{ปีการศึกษา} & \AcaY
         \end{tabularx}
     \end{table}
@@ -388,8 +378,9 @@
             \textbf{Project Title} & \ThesisTiTleENGSnakecase \\
             \textbf{Student} & \AuNameENGSnakecase \\
             \textbf{Student ID} & \SId \\
-            \textbf{Program} & Information Technology \\
+            \textbf{Program} & Data Science and Business Analytics \\
             \textbf{Advisor} & \AdvisorEng \\
+            \textbf{Sub Advisor} & \AdvisorEngSub \\
             \textbf{Year} & \AcaYAD
         \end{tabularx}
     \end{table}
