@@ -5,6 +5,12 @@
 \usepackage{indentfirst}
 \usepackage{cite}
 \usepackage[final]{pdfpages}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{setspace}
+\usepackage{etoolbox}
+
+
+\AtBeginEnvironment{algorithm}{\setstretch{1.15}}
 
 % ##### Set indent after new line on bibliography
 \def\bibindent{2.1em}
@@ -38,7 +44,7 @@
 \newcommand{\AdvisorEng}{Assoc Prof. Worapoj Kreesuradej}
 \newcommand{\AdvisorEngSub}{Dr. Nont Kanungsukkasem}
 %Your advisor employee
-\newcommand{\Exami}{Professor Dr. Masanori Sugimoto}
+\newcommand{\Exami}{Assoc Prof. Worapoj Kreesuradej}
 %สถานประกอบการ
 \newcommand{\Company}{มหาวิทยาลัยฮอกไกโด}
 %ภาคเรียนที่ (in normal letters)
@@ -71,8 +77,8 @@
 % \makeletter
 \makeack{
 	\begin{enumerate}
-		\item \Exami \quad ตำแหน่ง ศาสตราจารย์
-		\item Jiang Ye \quad ตำแหน่ง นักศึกษาปริญญาเอก ปี 2
+		\item \Exami \quad
+		\item Dr. Nont Kanungsukkasem
 	\end{enumerate}
 }
 \makeapproveletter
@@ -105,9 +111,9 @@
 \addcontentsline{toc}{chapter}{สารบัญ}
 \tableofcontents
 
-\newpage
-\addcontentsline{toc}{chapter}{สารบัญตาราง}
-\listoftables
+% \newpage
+% \addcontentsline{toc}{chapter}{สารบัญตาราง}
+% \listoftables
 
 \newpage
 \addcontentsline{toc}{chapter}{สารบัญรูป}
@@ -131,7 +137,7 @@
 \bibliography{reference}
 
 \begin{thebibliography}{9}
-
+  
   \bibitem{baptiste} 
   Baptiste Rocca: Introduction to recommender systems
   \\\texttt{https://towardsdatascience.com/introduction-to-recommender-systems-6c66cf15ada}
@@ -246,6 +252,18 @@
   CompTIA Certification Roadmap
   \\\texttt{http://certification.comptia.org/why-certify/roadmap}
 
+  \bibitem{paul}
+  Paul Goodman, Practical Implementation of Software Metrics, 1993.
+  
+  \bibitem{psm group}
+  PSM Group, Practical Software and Systems Measurement, Version 4.0b, October 2000.
+
+  \bibitem{wiki api}
+  application programming interface (API), wikipedia
+  \\\texttt{https://en.wikipedia.org/wiki/API}
+
+  \bibitem{python}
+  Michal Jaworski and Tarek Ziade, Expert python programming, 2nd edition, PACKT, 2016
 
   \end{thebibliography}
 
